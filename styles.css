@@ -1,71 +1,518 @@
+/* Alternative visual theme: warm cream, charcoal and terracotta.
+   This stylesheet changes presentation only; the existing pages, content,
+   JavaScript, images and ZIP structure are retained. */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #292521;
+    background: #f4efe7;
+    --ink: #292521;
+    --muted: #665d55;
+    --cream: #f4efe7;
+    --paper: #fffdf9;
+    --charcoal: #292521;
+    --terracotta: #a94f35;
+    --terracotta-dark: #783622;
+    --line: #d9cfc2;
+    --focus: #f2b84b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial;
     margin: 0;
-    background: #eeeeee;
+    line-height: 1.65;
+    font-size: 16px;
+    background:
+        radial-gradient(ellipse at top left, rgba(169, 79, 53, .08), transparent 36rem),
+        var(--cream);
+    color: var(--ink);
+}
+
+a {
+    color: var(--terracotta-dark);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+
+a:hover {
+    color: #4f261a;
+    text-decoration-thickness: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: 12px;
+    z-index: 10;
+    padding: 10px 14px;
+    background: var(--paper);
+    color: var(--charcoal);
+    border: 2px solid var(--terracotta);
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 12px;
 }
 
 header {
-    background: #14365d;
-    color: white;
-    padding: 20px;
+    color: #fffaf4;
+    background: var(--charcoal);
+    padding: 28px max(20px, calc((100% - 1160px) / 2)) 0;
+    border-bottom: 5px solid var(--terracotta);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 22px;
 }
 
 h1 {
     margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: -.035em;
+    line-height: 1.1;
+}
+
+.tagline {
+    margin: 8px 0 0;
+    color: #e8d8ca;
+    letter-spacing: .025em;
+}
+
+.phone {
+    margin: 0;
+    font-weight: bold;
+    color: #f5e9df;
+}
+
+.phone a,
+footer a {
+    color: #fff5eb;
 }
 
 nav {
-    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0 0 13px;
 }
 
 nav a {
-    color: white;
-    margin-right: 15px;
+    color: #fffaf4;
+    padding: 8px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color .18s ease;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    color: #fff;
+    background: var(--terracotta);
 }
 
 main {
-    width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
+    width: min(1160px, calc(100% - 36px));
+    margin: 34px auto;
+    padding: clamp(22px, 4vw, 44px);
+    background: var(--paper);
+    border: 1px solid #e6ddd2;
+    border-radius: 14px;
+    box-shadow: 0 12px 34px rgba(54, 39, 27, .07);
 }
 
-img {
-    width: 300px;
+h2 {
+    color: var(--charcoal);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.65rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    margin-top: 0;
 }
 
-table {
-    border-collapse: collapse;
+h3 {
+    color: var(--terracotta-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
 }
 
-td {
-    border: 1px solid black;
-    padding: 5px;
+.intro {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(28px, 5vw, 58px);
+    margin: -4px -4px 34px;
+    color: #fffaf4;
+    background:
+        linear-gradient(110deg, rgba(41, 37, 33, .96), rgba(87, 52, 39, .88)),
+        var(--charcoal);
+    border-radius: 12px;
+    border-left: 7px solid var(--terracotta);
 }
 
-label {
-    display: block;
+.intro::after {
+    content: "B";
+    position: absolute;
+    right: 3%;
+    bottom: -100px;
+    color: rgba(255, 255, 255, .055);
+    font: bold 19rem Georgia, serif;
+    pointer-events: none;
 }
 
-input,
-select,
-textarea {
-    width: 400px;
-    margin-bottom: 10px;
+.intro h2 {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    color: #fffaf4;
+    font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
-textarea {
-    height: 100px;
+.intro p {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    color: #f1e5db;
+    font-size: 1.08rem;
 }
 
+.button,
 button {
-    background: #14365d;
-    color: white;
-    padding: 5px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    background: var(--terracotta);
+    color: #ffffff;
+    border: 2px solid var(--terracotta);
+    border-radius: 5px;
+    padding: 11px 19px;
+    font: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .18s ease, transform .18s ease;
+}
+
+.button:hover,
+button:hover {
+    background: var(--terracotta-dark);
+    border-color: var(--terracotta-dark);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.car-card {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 5px 16px rgba(54, 39, 27, .06);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(54, 39, 27, .12);
+}
+
+.car-card img {
+    display: block;
+    width: 100%;
+    height: 205px;
+    object-fit: cover;
+    background: #e7ded3;
+}
+
+.car-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px;
+}
+
+.car-details h3 {
+    margin: 0 0 5px;
+    color: var(--charcoal);
+}
+
+.car-details p {
+    margin: 7px 0;
+    color: var(--muted);
+}
+
+.car-details .price {
+    color: var(--terracotta-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.45rem;
+    font-weight: bold;
+}
+
+.car-details a {
+    margin-top: auto;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.stock-note {
+    margin-top: 26px;
+    padding: 13px 16px;
+    color: var(--muted);
+    background: #f7f1e9;
+    border-left: 4px solid var(--terracotta);
 }
 
 footer {
-    width: 900px;
-    margin: auto;
-    font-size: 12px;
+    width: min(1160px, calc(100% - 36px));
+    margin: 0 auto;
+    padding: 18px 0 30px;
+    color: #f4e8dc;
+    font-size: 14px;
+}
+
+.about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(240px, .9fr);
+    gap: 34px;
+}
+
+.content-section,
+.sidebar {
+    min-width: 0;
+}
+
+.sidebar {
+    align-self: start;
+    padding: 24px;
+    background: #f7f0e7;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--terracotta);
+    border-radius: 8px;
+}
+
+.sidebar h2 {
+    font-size: 1.45rem;
+}
+
+.sidebar ul {
+    padding-left: 22px;
+}
+
+.sidebar li {
+    margin: 8px 0;
+}
+
+.opening-times div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.opening-times dt {
+    font-weight: bold;
+}
+
+.opening-times dd {
+    margin: 0;
+    text-align: right;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+
+caption {
+    text-align: left;
+    font-weight: bold;
+    padding: 7px 0;
+    color: var(--charcoal);
+}
+
+th,
+td {
+    border: 1px solid var(--line);
+    padding: 11px;
+    text-align: left;
+}
+
+thead th {
+    background: #eee2d5;
+    color: var(--charcoal);
+}
+
+tbody tr:nth-child(even) {
+    background: #fbf7f1;
+}
+
+.form-main {
+    max-width: 850px;
+}
+
+.form-panel {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.form-field {
+    margin: 20px 0;
+}
+
+.form-field > label,
+.form-field legend {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+    color: var(--charcoal);
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid #9c8d7e;
+    border-radius: 5px;
+    background: #fffefa;
+    color: var(--ink);
+    font: inherit;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+fieldset {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px;
+    background: #fcf8f2;
+}
+
+.choice {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 18px 5px 0;
+    font-weight: normal !important;
+    cursor: pointer;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--terracotta);
+}
+
+.field-error {
+    display: block;
+    color: #9c211b;
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+[aria-invalid="true"] {
+    border: 2px solid #9c211b !important;
+}
+
+#form-status {
+    min-height: 1.5em;
+    font-weight: bold;
+    color: #315d39;
+}
+
+@media (max-width: 900px) {
+    .car-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .car-grid,
+    .about-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .car-card img {
+        height: 220px;
+    }
+
+    main {
+        margin-block: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    main {
+        width: calc(100% - 20px);
+        padding: 16px;
+    }
+
+    header {
+        padding-inline: 16px;
+    }
+
+    nav a {
+        padding: 7px 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
